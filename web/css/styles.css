@@ -1,0 +1,195 @@
+.panel-body.tweets, .panel-body.tweets {
+    min-height: 200px;
+    overflow: hidden;
+}
+.panel-body.tweets .bx-viewport{
+    height: 100% !important;
+}
+.panel-body.tweets .bx-wrapper{
+    box-shadow: none !important;
+}
+.panel-body.followers, .panel-body.followers {
+    min-height: 200px;
+    overflow: hidden;
+}
+.panel-body.followers .bx-viewport{
+    height: 100% !important;
+}
+.panel-body.followers .bx-wrapper{
+    box-shadow: none !important;
+}
+
+
+#twtbody {
+    margin-bottom: 0px;
+}
+.image{
+    border-radius: 50%;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #09aacc;
+    height: 200px!important;
+    width: 200px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.profileimg{
+    height: 24px;
+    border-radius: 50%;
+    border-color: #09aacc;
+    border-style: solid;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.profilename{
+   font-weight: 900;
+   font-size: 15px;
+}
+
+.caption {
+    font-size: 80%;
+    font-family: Verdana, Arial, sans-serif;
+    text-align: center;
+    background-color:#d3d3d3;
+    order: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.followers-search-img{
+    height: 174px;
+    width: 169px;
+    border-radius: 50%;
+}
+.autocomplete-follower-name{
+    margin-left: 10px;
+    margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: 600;
+}
+.glyphicon {  margin-bottom: 10px;margin-right: 10px;}
+
+small {
+display: block;
+line-height: 1.428571429;
+color: #999;
+}
+
+.autocomplete-follower-screen-name{
+    font-size: 12px;
+}
+
+.twPc-div {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #e1e8ed;
+    border-radius: 6px;
+    height: 200px;
+    max-width: 340px; // orginal twitter width: 290px;
+}
+.twPc-bg {
+    background-image: url("https://pbs.twimg.com/profile_banners/50988711/1384539792/600x200");
+    background-position: 0 50%;
+    background-size: 100% auto;
+    border-bottom: 1px solid #e1e8ed;
+    border-radius: 4px 4px 0 0;
+    height: 95px;
+    width: 100%;
+}
+.twPc-block {
+    display: block !important;
+}
+.twPc-button {
+    margin: -35px -10px 0;
+    text-align: right;
+    width: 100%;
+}
+.twPc-avatarLink {
+    background-color: #fff;
+    border-radius: 6px;
+    display: inline-block !important;
+    float: left;
+    margin: -30px 5px 0 8px;
+    max-width: 100%;
+    padding: 1px;
+    vertical-align: bottom;
+}
+.twPc-avatarImg {
+    border: 2px solid #fff;
+    border-radius: 7px;
+    box-sizing: border-box;
+    color: #fff;
+    height: 72px;
+    width: 72px;
+}
+.twPc-divUser {
+    margin: 5px 0 0;
+}
+.twPc-divName {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 21px;
+}
+.twPc-divName a {
+    color: inherit !important;
+}
+.twPc-divStats {
+    margin-left: 11px;
+    padding: 10px 0;
+}
+.twPc-Arrange {
+    box-sizing: border-box;
+    display: table;
+    margin: 0;
+    min-width: 100%;
+    padding: 0;
+    table-layout: auto;
+}
+ul.twPc-Arrange {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+.twPc-ArrangeSizeFit {
+    display: table-cell;
+    padding: 0;
+    vertical-align: top;
+    width: 100px;
+}
+.twPc-ArrangeSizeFit a:hover {
+    text-decoration: none;
+}
+.twPc-StatValue {
+    display: block;
+    font-size: 18px;
+    font-weight: 500;
+    transition: color 0.15s ease-in-out 0s;
+}
+.twPc-StatLabel {
+    color: #8899a6;
+    font-size: 10px;
+    letter-spacing: 0.02em;
+    overflow: hidden;
+    text-transform: uppercase;
+    transition: color 0.15s ease-in-out 0s;
+}
+.bx-prev{
+z-index: 2 !important;
+}
+.bx-next{
+z-index: 2 !important;
+}
+.follower-info{
+ z-index: 9999 !important;   
+}
