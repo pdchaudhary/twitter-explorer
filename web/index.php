@@ -63,7 +63,7 @@
                 </div>
                 <!--Guest User Markup-->
                 <div class="navbar-header navbar-right navbar-guest-user">
-                    <a class="navbar-brand">Guest User</a>
+                    <li class="active"> <a class="navbar-brand">Guest User</a></li>
                 </div>
                 <!--End Guest User Markup-->
                 <!--Twitter User Markup-->
@@ -76,7 +76,7 @@
                                 <span class="caret"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li class="user-profile"><a class="user-profile" >Profile</a></li>
+                                <li><a class="user-profile" >Profile</a></li>
                                 <li><a href="#" class="twitter-user-logout">Logout</a></li>
                             </ul>
                         </li>
@@ -95,11 +95,15 @@
                 </div>
             </div>
             <!--End Twitter Login Button Markup-->
+
             <!--Twitter Tweets & Followers Markup-->
+
             <div class="panel panel-default" style="margin-bottom: 0px">
                 <div class="panel-body row">
-                    <div class="col-xs-6 col-md-6" style="font-size: 23px">Tweets</div>
-                    <div class="col-xs-6 col-md-6" style="font-size: 23px; text-align: right;"><a href="/downloadTweets.php" filename="MyTweets.csv" download class="primary">Download</a></div>
+                    <div class="col-xs-6 col-md-9" style="font-size: 23px">Tweets</div>
+                    <div class="col-xs-6 col-md-3" style="font-size: 23px; text-align: right;">
+                        <input type="search" placeholder="Search Users" class="form-control twitter-users-search">
+                    </div>
                 </div>
             </div>
             <div class="panel panel-default" >
@@ -189,6 +193,14 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <div class="dropdown pull-left">
+                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Download Tweets
+                            <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li><a class="btn-download-tweets-pdf" href="#" download="">PDF</a></li>
+                                <li><a class="btn-download-tweets-csv" href="#" download="">CSV</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 

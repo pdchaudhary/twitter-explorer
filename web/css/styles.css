@@ -193,3 +193,6 @@ z-index: 2 !important;
 .follower-info{
  z-index: 9999 !important;   
 }
+a{
+    cursor: pointer;
+}

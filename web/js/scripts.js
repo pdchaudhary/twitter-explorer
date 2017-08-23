@@ -20,7 +20,7 @@ function setUpSliders(){
         auto: true
     });
     followerSlider = $('.followers-slider').bxSlider({
-        minSlides: 3,
+        minSlides: 2,
         maxSlides: 10,
         slideWidth: 200,
         slideMargin: 10,
@@ -67,7 +67,7 @@ function getFollowers(){
             response.followers.forEach(function(follower,index){
                 var followLi = $("<li/>");
                 var followA = $("<a/>").attr("href", "https://twitter.com/" + follower.screen_name);
-                var followImg = $("<img/>").attr("src",follower.profile_image_url_https.replace('_normal',''));
+                var followImg = $("<img/>").attr("src",follower.profile_image_url.replace('_normal',''));
                 var followDiv = $("<div/>").addClass("caption");
                 followDiv.html(follower.name);
                 followA.append(followImg);
@@ -180,7 +180,7 @@ function setNewTwitterLoginURL(){
 
 function loginUser(user){
     $('span.navbar-twitter-user-name').html(user.name);
-    $('img.navbar-twitter-user-profile').attr("src",user.profile_image_url_https);
+    $('img.navbar-twitter-user-profile').attr("src",user.profile_image_url);
     $('a.navbar-twitter-user-url').attr("href", "https://twitter.com/" + user.screen_name);
     $('div.navbar-guest-user').hide();
     $('div.navbar-twitter-user').show();
@@ -196,7 +196,7 @@ function loginUser(user){
 
     $("button.btn-twitter-login").attr("data-href", "#");
 }
- $( ".followers-search" ).autocomplete({
+ $(".followers-search").autocomplete({
     source: function( request, response ) {
         $.ajax({
             url: "/searchFollowers.php",
@@ -218,11 +218,40 @@ function loginUser(user){
     select: function( event, ui ) {
         updateFollowerModalInfo(ui.item.follower);
         $(".modal.follower-info").modal('show');
+        $(".bx-next").hide();
+        $(".bx-prev").hide();
+    },
+});
+
+$(".twitter-users-search").autocomplete({
+    source: function( request, response ) {
+        $.ajax({
+            url: "/searchUsers.php",
+            dataType: "json",
+            data: {
+                query: request.term
+            },
+            success: function( data ) {
+                response($.map(data.users, function(user, index){
+                    return {
+                        label: user.name + " @" + user.screen_name,
+                        user: user,
+                    };
+                }));
+            }
+        });
+    },
+    minLength: 3,
+    select: function( event, ui ) {
+        updateFollowerModalInfo(ui.item.user);
+        $(".modal.follower-info").modal('show');
+        $(".bx-next").hide();
+        $(".bx-prev").hide();
     },
 });
 
 function updateFollowerModalInfo(follower){
-    $(".followers-search-img").attr("src",follower.profile_image_url_https.replace('_normal',''));
+    $(".followers-search-img").attr("src",follower.profile_image_url.replace('_normal',''));
     $(".followers-search-name").html(follower.name);
     $(".followers-search-location").html(follower.location);
     $(".followers-search-screen_name").html("@"+follower.screen_name);
@@ -234,10 +263,10 @@ function updateFollowerModalInfo(follower){
     $(".following-links").attr("href", "https://twitter.com/" + follower.screen_name + "/following");
     $(".followers-links").attr("href", "https://twitter.com/" + follower.screen_name + "/followers");
     $(".likes-links").attr("href", "https://twitter.com/" + follower.screen_name + "/likes");
-
-
-
-
+    $(".btn-download-tweets-pdf").attr("href", "/downloadTweets.pdf.php?handle=" + follower.screen_name);
+    $(".btn-download-tweets-pdf").attr("download", follower.screen_name + "_tweets.pdf");
+    $(".btn-download-tweets-csv").attr("href", "/downloadTweets.csv.php?handle=" + follower.screen_name);
+    $(".btn-download-tweets-csv").attr("download", follower.screen_name + "_tweets.csv");
 }
 
 $(document).on('click', '.user-profile', function(event){
@@ -245,28 +274,14 @@ $(document).on('click', '.user-profile', function(event){
         url:"/userDetail.php",
         dataType:"json",
         method:"GET",
-         success:function(response){
+        success:function(response){
             if(response.status != 1){
                 alert("Error Loading Tweets");
                 return;
             }
 
-            updateProfileModalInfo(response.userdetail);
-             $(".modal.follower-info").modal('show');
-          }   
+            updateFollowerModalInfo(response.user);
+            $(".modal.follower-info").modal('show');
+        }   
     })
 });
- function updateProfileModalInfo(myprofile){
-    $(".followers-search-img").attr("src",myprofile.profile_image_url_https.replace('_normal',''));
-    $(".followers-search-name").html(myprofile.name);
-    $(".followers-search-location").html(myprofile.location);
-    $(".followers-search-screen_name").html("@"+myprofile.screen_name);
-    $(".followers-search-tweets").html(myprofile.statuses_count);
-    $(".followers-search-following").html(myprofile.friends_count);
-    $(".followers-search-followers").html(myprofile.followers_count);
-    $(".followers-search-likes").html(myprofile.favourites_count);
-    $(".follower-profile-links").attr("href", "https://twitter.com/" + myprofile.screen_name);
-    $(".following-links").attr("href", "https://twitter.com/" + myprofile.screen_name + "/following");
-    $(".followers-links").attr("href", "https://twitter.com/" + myprofile.screen_name + "/followers");
-    $(".likes-links").attr("href", "https://twitter.com/" + myprofile.screen_name + "/likes");
- }
